@@ -9,7 +9,7 @@ import { authConfig } from './auth.config';
 async function getUser(email: string): Promise<User | undefined> {
   try {
     const client = await sql.connect();
-    const user = await client.sql<User>`SELECT * FROM users WHERE email='test@mailsac.com'`;
+    const user = await client.sql<User>`SELECT * FROM users WHERE email=${email}`;
     console.log('user11', user)
     return user.rows[0];
   } catch (error) {
